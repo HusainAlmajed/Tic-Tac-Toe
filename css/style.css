@@ -1,0 +1,42 @@
+body {
+  background-color: gainsboro;
+  font-family: system-ui, sans-serif;
+  margin: 0;
+  text-align: center;
+}
+
+.board {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  width: 325px;
+  justify-self: center;
+  /* background-color: white; */
+
+}
+
+.sqr {
+  width: 30%;
+  aspect-ratio: 1/1;
+  border: 3px solid black;
+  font-size: 64px;
+  text-align: center;
+  background-color: white;
+}
+
+#resDis {
+}
+
+#reset:hover {
+    cursor: pointer;
+}
+
+#reset {
+    min-height: 20px;
+    width: 120px;
+    height: 40px;
+    border: solid black 3px;
+    border-radius: 30%;
+    background-color: antiquewhite;
+}
+
