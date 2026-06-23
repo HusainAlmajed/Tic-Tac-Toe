@@ -34,8 +34,7 @@ const checkForWinner = () => {
 
     winComb.forEach ((item) => {
         // if winComb[0] we check its not empty and if it matches the wincomp 
-
-        if (board[item[0]] !== '' && board[item[0]] === board[item[1]] && board[0] === board[item[2]]) {
+        if (board[item[0]] !== '' && board[item[0]] === board[item[1]] && board[item[0]] === board[item[2]]) {
             winner = true;
         }
 
@@ -73,6 +72,9 @@ if (item.target.textContent === '') {
 checkForWinner();
 
 if (winner) {
+    //to reverse the turn for displaying the correct message
+    if (turn === 'x') turn = 'O';
+    else turn = 'X';
     msg.textContent = (`The winner is : ${turn}`);
 }
 
