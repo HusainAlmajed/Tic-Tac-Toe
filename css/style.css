@@ -1,8 +1,9 @@
 body {
-  background-color: gainsboro;
+  background-color: #E2E2E2;
   font-family: system-ui, sans-serif;
   margin: 0;
   text-align: center;
+  color: #384D48;
 }
 
 .board {
@@ -21,10 +22,12 @@ body {
   border: 3px solid black;
   font-size: 64px;
   text-align: center;
-  background-color: white;
+  background-color: #D8D4D5;
 }
 
-#resDis {
+.sqr:hover {
+  cursor: pointer;
+  background-color: #ACAD94;
 }
 
 #reset:hover {
@@ -32,11 +35,12 @@ body {
 }
 
 #reset {
+  margin: 15px;
     min-height: 20px;
     width: 120px;
     height: 40px;
     border: solid black 3px;
-    border-radius: 30%;
+    border-radius: 1cap;
     background-color: antiquewhite;
 }
 

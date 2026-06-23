@@ -27,7 +27,6 @@ let tie = false;
 const reset = document.querySelector('#reset');
 const squareBox = document.querySelectorAll('.sqr');
 const msg = document.querySelector('#message');
-const brd = document.querySelector('#board');
 
 /*-------------------------------- Functions --------------------------------*/
 
@@ -43,6 +42,17 @@ const checkForWinner = () => {
 
 }
 
+const checkForTie = () => {
+
+    if (winner) return;
+
+    //check if board has no empty square
+    if (!board.includes('')) {
+        tie = true;
+    };
+
+};
+
 const addValue = (item) => {
     //so everyytime the function is called we can get the id of the specific square. 
     const indexFill = item.target.id;
@@ -53,14 +63,14 @@ if (winner) {
 
 if (item.target.textContent === '') {
     if (turn === 'x') {
-    msg.textContent = `It's X's turn`;
+    msg.textContent = `It's O's turn`;
     item.target.textContent = 'x';
     board[indexFill] = 'x'; // to fill in the empty board array with the played digit to compare it later on.
     turn = 'o';
     console.log('Box clicked ' , item.target.id);
     // const sqrIndex = item.target.id;
     }else if (turn === 'o') {
-        msg.textContent = `It's O's turn`;
+        msg.textContent = `It's X's turn`;
         item.target.textContent = 'o';
         board[indexFill] = 'o';
         turn = 'x';
@@ -69,15 +79,17 @@ if (item.target.textContent === '') {
     msg.textContent = 'Invalid. Chose a different box';
 }
 
-
 checkForWinner();
+checkForTie();
 
 if (winner) {
     //to reverse the turn for displaying the correct message
     if (turn === 'x') turn = 'O';
     else turn = 'X';
     msg.textContent = (`The winner is : ${turn}`);
-}
+}else if (tie) {
+    msg.textContent = ('Its A Tie!!!');
+};
 
 // console.log(winner);
 // console.log(board);
@@ -90,6 +102,7 @@ const removeVal = (item) => {
     //reset all variables
     winner = false;
     turn = 'x';
+    tie = false;
     board.fill('');// to empty the board array
 
     //to rest the message
