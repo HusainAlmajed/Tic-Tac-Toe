@@ -33,18 +33,19 @@ const msg = document.querySelector('#message');
 const checkForWinner = () => {
 
     winComb.forEach ((item) => {
+        // if winComb[0] we check its not empty and if it matches the wincomp 
 
-
+        if (board[item[0]] !== '' && board[item[0]] === board[item[1]] && board[0] === board[item[2]]) {
+            winner = true;
+        }
 
     });
 
 }
 
-
 const addValue = (item) => {
     //so everyytime the function is called we can get the id of the specific square. 
     const indexFill = item.target.id;
-
     // if winner = true
 if (winner) {
     return;// the function will return, or stop
@@ -67,7 +68,16 @@ if (item.target.textContent === '') {
 }else{
     msg.textContent = 'Invalid. Chose a different box';
 }
-console.log(board);
+
+
+checkForWinner();
+
+if (winner) {
+    msg.textContent = (`The winner is : ${turn}`);
+}
+
+// console.log(winner);
+// console.log(board);
 }; 
 
 
