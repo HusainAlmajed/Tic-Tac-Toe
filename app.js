@@ -27,6 +27,7 @@ let tie = false;
 const reset = document.querySelector('#reset');
 const squareBox = document.querySelectorAll('.sqr');
 const msg = document.querySelector('#message');
+const brd = document.querySelector('#board');
 
 /*-------------------------------- Functions --------------------------------*/
 
@@ -84,8 +85,24 @@ if (winner) {
 
 
 //for the reset
-const removeval = (item) => {
-    item.target.textContent = '';
+const removeVal = (item) => {
+
+    //reset all variables
+    winner = false;
+    turn = 'x';
+    board.fill('');// to empty the board array
+
+    //to rest the message
+
+    msg.textContent = 'Click a box to start playing';
+    
+    //to reset all the boxes
+    squareBox.forEach((item) => {
+
+        item.textContent = '';
+
+    }); 
+    
 }
 
 /*----------------------------- Event Listeners -----------------------------*/
@@ -93,4 +110,6 @@ const removeval = (item) => {
 squareBox.forEach((box) => {
 box.addEventListener ('click' , addValue)//we called the function above
 });
+
+reset.addEventListener ('click' , removeVal);
     
