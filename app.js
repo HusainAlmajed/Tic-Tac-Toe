@@ -4,22 +4,24 @@ const board =
 '' , '' , '' ,
 '' , '' , ''];
 
-const winComb = 
-[0 , 1 , 2 ,
-3 , 4 , 5 ,
-6 , 7 , 8 ,
-0 , 3 , 6 ,
-1 , 4 , 7 , 
-2 , 5 , 8 ,
-0 , 4 , 8 ,
-2 , 4 , 6
+// al winning conditions 
+const winComb = [ 
+[0 , 1 , 2] ,
+[3 , 4 , 5] ,
+[6 , 7 , 8] ,
+[0 , 3 , 6] ,
+[1 , 4 , 7] , 
+[2 , 5 , 8] ,
+[0 , 4 , 8] ,
+[2 , 4 , 6]
 ]; 
 
 
 /*-------------------------------- Variables --------------------------------*/
 
-let winner = '';
+let winner = false;
 let turn = 'x';
+let tie = false;
 
 /*------------------------ Cached Element References ------------------------*/
 const reset = document.querySelector('#reset');
@@ -28,24 +30,47 @@ const msg = document.querySelector('#message');
 
 /*-------------------------------- Functions --------------------------------*/
 
+const checkForWinner = () => {
+
+    winComb.forEach ((item) => {
+
+
+
+    });
+
+}
+
+
 const addValue = (item) => {
+    //so everyytime the function is called we can get the id of the specific square. 
+    const indexFill = item.target.id;
+
+    // if winner = true
+if (winner) {
+    return;// the function will return, or stop
+}
+
 if (item.target.textContent === '') {
     if (turn === 'x') {
     msg.textContent = `It's X's turn`;
     item.target.textContent = 'x';
+    board[indexFill] = 'x'; // to fill in the empty board array with the played digit to compare it later on.
     turn = 'o';
     console.log('Box clicked ' , item.target.id);
     // const sqrIndex = item.target.id;
     }else if (turn === 'o') {
         msg.textContent = `It's O's turn`;
         item.target.textContent = 'o';
+        board[indexFill] = 'o';
         turn = 'x';
     }
 }else{
     msg.textContent = 'Invalid. Chose a different box';
 }
-
+console.log(board);
 }; 
+
+
 //for the reset
 const removeval = (item) => {
     item.target.textContent = '';
@@ -55,26 +80,5 @@ const removeval = (item) => {
 
 squareBox.forEach((box) => {
 box.addEventListener ('click' , addValue)//we called the function above
-
-    // squareBox.forEach(function(){
-
-    // event.target.textContent = 'x';
-    // console.log('Box Clicked' , event.target.id);
 });
     
-
-
-
-//Event listener for the reset button
-
-// reset.addEventListener ('click' , function(event) {
-
-// squareBox.forEach((box) => {
-//     box.addEventListener ()
-//     // squareBox.textContent = '';
-//     console.log('Reset Clicked');
-// });
-
-// });
-
-
